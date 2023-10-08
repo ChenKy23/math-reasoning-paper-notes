@@ -51,6 +51,7 @@ $$
 |\boldsymbol{a}|=\sum_{i=0}^k a_i=1
 $$
 **Pa = b**，如下：
+
 $$
 \begin{gathered}
 a_{00} \cdot c+a_{01} \cdot x_1+a_{02} \cdot x_2+a_{02} \cdot y_0+a_{04} \cdot x_1 x_2+\ldots a_{0 k} \cdot\left(x_1 x_2 \ldots x_n y_0\right)=0 \\
@@ -60,26 +61,31 @@ a_{10} \cdot c+a_{11} \cdot x_1+a_{12} \cdot x_2+a_{12} \cdot y_1+a_{14} \cdot x
 a_{k0} \cdot c+a_{k 1} \cdot x_1+a_{k 2} \cdot x_2+a_{k 2} \cdot y_1+a_{k k} \cdot x_1 x_2+a_{k k} \cdot\left(x_1 x_2 \ldots x_n y_k\right)=0
 \end{gathered}
 $$
+
 即，直接求解：
+
 $$
 \boldsymbol{a}=(\mathbf{P})^{-1} \boldsymbol{b}
 $$
 
 #### 基于搜索的求解算法
 
-针对a = {a0,a1,...an}, 作者限制了a1-n的解空间为{-1，0，1}，而a0的解空间为{-100，-1，0，1，100}，对于每个待选的表达式 f~i~∈F，遍历其对应的锚点答案x~j~∈X，并将fi对应xj的锚点答案记为yij。针对每个f~i~，将目标答案和预测答案的误差记为：
+针对a = {a0,a1,...an}, 作者限制了a1-n的解空间为{-1，0，1}，而a0的解空间为{-100，-1，0，1，100}，对于每个待选的表达式 f~i~∈F，遍历其对应的锚点答案x~j~∈X，并将fi对应xj的锚点答案记为yij。针对每个f~i~，将目标答案和预测答案的误差记为:
+
+
 $$
-\epsilon\left(\hat{f}, f_i\right)=\sum_j \epsilon_{i j}=\sum_j \operatorname{abs}\left(\hat{y}_j-y_{i j}\right)
+\sum_{j}\operatorname{abs}(\hat{y}_{j}-y_{ij})
 $$
+
+
 并将准确预测，即：
+
 $$
 y_j^*==\hat{y}_{i j}
 $$
+
 的数量记为:ci，当一个fi具有最小预测误差和最大最缺预测数量时即为求解该问题的最有表达式，具体过程如下：
-
-![image](assets/image-20231008125307-it3aue8.png#pic_center)
 <p><img src="assets/image-20231008125307-it3aue8.png" align="middle" /></p>
-
 #### 基于模拟退火的求解算法
 
 根据
