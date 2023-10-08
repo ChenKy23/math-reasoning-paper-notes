@@ -47,9 +47,11 @@ $$
 为了求解k+1个待定参数**a**，作者根据给定的锚点数为每个问题生成了k+1组锚点答案**y**，
 
 即k+1个k+1元方程组，表示为 **Pa = b**, **为保证方程满秩**，作者为**a**做了约束:
+
 $$
 |\boldsymbol{a}|=\sum_{i=0}^k a_i=1
 $$
+
 **Pa = b**，如下：
 
 $$
@@ -72,11 +74,9 @@ $$
 
 针对a = {a0,a1,...an}, 作者限制了a1-n的解空间为{-1，0，1}，而a0的解空间为{-100，-1，0，1，100}，对于每个待选的表达式 f~i~∈F，遍历其对应的锚点答案x~j~∈X，并将fi对应xj的锚点答案记为yij。针对每个f~i~，将目标答案和预测答案的误差记为:
 
-
 $$
 \sum_{j}\operatorname{abs}(\hat{y}_{j}-y_{ij})
 $$
-
 
 并将准确预测，即：
 
@@ -85,7 +85,9 @@ y_j^*==\hat{y}_{i j}
 $$
 
 的数量记为:ci，当一个fi具有最小预测误差和最大最缺预测数量时即为求解该问题的最有表达式，具体过程如下：
-<p><img src="assets/image-20231008125307-it3aue8.png" align="middle" /></p>
+<div align=center>
+<img src=assets/image-20231008125307-it3aue8.png height=440 width=400/>
+</div>
 #### 基于模拟退火的求解算法
 
 根据
@@ -113,7 +115,9 @@ $$
 
 1. DROP（Discrete Reasoning Over Paragraphs）：DROP 是一个阅读理解基准测试，专注于数字推理，有多种答案类型，包括跨度、数字和日期。问答主要涉及数字推理，但也有其他类型问题。
 
-![image](assets/image-20231008141415-nzu5fxj.png)
+<div align=center>
+<img src=assets/image-20231008141415-nzu5fxj.png height=440 width=400/>
+</div>
 
 2. AddSub和MultiArith都是MAWPS (MAth Word ProblemS)数据集的子集，其中AddSub的数值推理相对容易，而MultiArith则需要多步数值计算。
 
