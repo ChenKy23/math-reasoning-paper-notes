@@ -42,15 +42,18 @@ $$
 
 接下来，作者介绍了三种从锚点操作数和锚点答案导出表达式的算法：
 
-#### 基于分析的求解算法
+#### 3.1 基于分析的求解算法
 
 为了求解k+1个待定参数**a**，作者根据给定的锚点数为每个问题生成了k+1组锚点答案**y**，
 
 即k+1个k+1元方程组，表示为 **Pa = b**, **为保证方程满秩**，作者为**a**做了约束:
+
 $$
 |\boldsymbol{a}|=\sum_{i=0}^k a_i=1
 $$
+
 **Pa = b**，如下：
+
 $$
 \begin{gathered}
 a_{00} \cdot c+a_{01} \cdot x_1+a_{02} \cdot x_2+a_{02} \cdot y_0+a_{04} \cdot x_1 x_2+\ldots a_{0 k} \cdot\left(x_1 x_2 \ldots x_n y_0\right)=0 \\
@@ -60,27 +63,35 @@ a_{10} \cdot c+a_{11} \cdot x_1+a_{12} \cdot x_2+a_{12} \cdot y_1+a_{14} \cdot x
 a_{k0} \cdot c+a_{k 1} \cdot x_1+a_{k 2} \cdot x_2+a_{k 2} \cdot y_1+a_{k k} \cdot x_1 x_2+a_{k k} \cdot\left(x_1 x_2 \ldots x_n y_k\right)=0
 \end{gathered}
 $$
+
 即，直接求解：
+
 $$
 \boldsymbol{a}=(\mathbf{P})^{-1} \boldsymbol{b}
 $$
 
-#### 基于搜索的求解算法
+#### 3.2 基于搜索的求解算法
 
-针对a = {a0,a1,...an}, 作者限制了a1-n的解空间为{-1，0，1}，而a0的解空间为{-100，-1，0，1，100}，对于每个待选的表达式 f~i~∈F，遍历其对应的锚点答案x~j~∈X，并将fi对应xj的锚点答案记为yij。针对每个f~i~，将目标答案和预测答案的误差记为：
+针对a = {a0,a1,...an}, 作者限制了a1-n的解空间为{-1，0，1}，而a0的解空间为{-100，-1，0，1，100}，对于每个待选的表达式 f~i~∈F，遍历其对应的锚点答案x~j~∈X，并将fi对应xj的锚点答案记为yij。针对每个f~i~，将目标答案和预测答案的误差记为:
+
 $$
-\epsilon\left(\hat{f}, f_i\right)=\sum_j \epsilon_{i j}=\sum_j \operatorname{abs}\left(\hat{y}_j-y_{i j}\right)
+\sum_{j}\operatorname{abs}(\hat{y}_{j}-y_{ij})
 $$
+
 并将准确预测，即：
+
 $$
 y_j^*==\hat{y}_{i j}
 $$
+
 的数量记为:ci，当一个fi具有最小预测误差和最大最缺预测数量时即为求解该问题的最有表达式，具体过程如下：
+<div align=center>
+<img src=assets/image-20231008125307-it3aue8.png height=440 width=400/>
+</div>
 
-![image](assets/image-20231008125307-it3aue8.png#pic_center)
-<p><img src="assets/image-20231008125307-it3aue8.png" align="middle" /></p>
+上述过程是一个在给定表达式搜索空间进行穷举搜索并根据答案准确性来确定最终表达式的过程，随着操作数的数量增长，搜索范围是爆炸式递增的。
 
-#### 基于模拟退火的求解算法
+#### 3.3 基于模拟退火的求解算法
 
 根据
 
@@ -107,7 +118,9 @@ $$
 
 1. DROP（Discrete Reasoning Over Paragraphs）：DROP 是一个阅读理解基准测试，专注于数字推理，有多种答案类型，包括跨度、数字和日期。问答主要涉及数字推理，但也有其他类型问题。
 
-![image](assets/image-20231008141415-nzu5fxj.png)
+<div align=center>
+<img src=assets/image-20231008141415-nzu5fxj.png height=440 width=400/>
+</div>
 
 2. AddSub和MultiArith都是MAWPS (MAth Word ProblemS)数据集的子集，其中AddSub的数值推理相对容易，而MultiArith则需要多步数值计算。
 
